@@ -6,9 +6,11 @@ class grad_vehicleSpawner {
     class common {
         file = MODULES_DIRECTORY\grad-vehicleSpawner\functions\common;
 
+        class addInteraction {};
     };
     class dialog {
         file = MODULES_DIRECTORY\grad-vehicleSpawner\functions\dialog;
 
+        class openDialog {};
     };
 };
