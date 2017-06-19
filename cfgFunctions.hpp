@@ -7,10 +7,21 @@ class grad_vehicleSpawner {
         file = MODULES_DIRECTORY\grad-vehicleSpawner\functions\common;
 
         class addInteraction {};
+        class trackVehicleStatus {};
     };
     class dialog {
         file = MODULES_DIRECTORY\grad-vehicleSpawner\functions\dialog;
 
         class openDialog {};
     };
+    class spawn {
+        file = MODULES_DIRECTORY\grad-vehicleSpawner\functions\spawn;
+
+        class deletePreview {};
+        class onSpawnClient {};
+        class requestSpawn {};
+        class spawnPreview {};
+        class spawnVehicle {};
+    };
+
 };

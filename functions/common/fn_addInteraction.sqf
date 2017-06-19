@@ -1,3 +1,5 @@
+#include "component.hpp"
+
 params ["_obj",["_actionName","Vehicle Spawner"],["_condition",{true}],["_vehiclesTypes",[]],["_spawnPositions",[]],["_cameraPositions",[]]];
 
 ["grad_vehicleSpawner_mainAction",_actionName,"",{
