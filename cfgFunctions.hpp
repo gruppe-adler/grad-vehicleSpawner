@@ -7,6 +7,7 @@ class grad_vehicleSpawner {
         file = MODULES_DIRECTORY\grad-vehicleSpawner\functions\common;
 
         class addInteraction {};
+        class initModule {postInit = 1;};
         class trackVehicleStatus {};
     };
     class dialog {

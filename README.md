@@ -31,3 +31,20 @@ class CfgFunctions {
     #include "node_modules\grad-vehicleSpawner\cfgFunctions.hpp"
 };
 ```
+
+## Config
+Add the class `cfgGradVehicleSpawner` to your `description.ext`. Use the following attributes to configure the module:
+
+### Attributes
+
+Attribute   | Default Value | Explanation
+------------|---------------|-------------------------------------------------------------------------------------
+maxVehicles | 40            | Threshold of spawned vehicles, after which empty vehicles will be deleted instantly.
+
+### Example
+
+```sqf
+class cfgGradVehicleSpawner {
+    maxVehicles = 100;
+};
+```
