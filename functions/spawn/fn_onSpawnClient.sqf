@@ -1,4 +1,4 @@
-#include "component.hpp
+#include "component.hpp"
 
 params [["_veh",objNull],["_moveInDriver",false]];
 

@@ -48,3 +48,25 @@ class cfgGradVehicleSpawner {
     maxVehicles = 100;
 };
 ```
+
+## Implementation
+
+`[vehicleTypes,spawnPositions] call grad_vehicleSpawner_fnc_openDialog`
+
+Parameter | Explanation
+------------|---------------
+vehicleTypes | Array - Does nothing right now. Empty array to allow all existing vehicles.
+spawnPositions | Array - Array of 5 Spawnpositions (one for each vehicle type)
+
+Spawnpositions have to be in order: [Wheeled,Tracked,Rotary Wing,Fixed Wing,Naval]  
+Each positions can have a fourth entry besides x,y and z: Spawn direction of the vehicle for this position.
+
+### Example
+
+```sqf
+_spawnLand = [3200,1200,0];  // Wheeled and tracked will use same spawn position
+_spawnAir = [3500,1600,0,128];  // spawndirection is 128 >> in direction of runway
+_spawnWater = [3140,1400,0];
+
+[[],[_spawnLand,_spawnLand,_spawnAir,_spawnAir,_spawnWater]] call grad_vehicleSpawner_fnc_openDialog
+```
