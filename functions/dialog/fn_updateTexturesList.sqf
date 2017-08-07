@@ -2,7 +2,8 @@
 
 #include "..\..\dialog\defines.hpp"
 
-params ["_preview",["_cfg",missionNamespace getVariable ["grad_vehicleSpawner_currentVehicleCfg",configNull]]];
+private _selVeh = missionNamespace getVariable ["grad_vehicleSpawner_selVeh",objNull];
+private _cfg = if (isNull _selVeh) then {configNull} else {configFile >> "cfgVehicles" >> typeOf _selVeh};
 
 private _display = uiNamespace getVariable ["grad_vehicleSpawner_display",displayNull];
 
@@ -11,7 +12,7 @@ private _checkboxTextures = [
     tolower gettext (configfile >> "RscCheckBox" >> "textureChecked")
 ];
 
-private _textures = _preview getVariable ["grad_vehicleSpawner_textures",[]];
+private _textures = _selVeh getVariable ["grad_vehicleSpawner_textures",[]];
 private _currentID = _textures find 1;
 private _ctrlListTextures = _display displayCtrl IDC_LISTTEXTURES;
 lbclear _ctrlListTextures;

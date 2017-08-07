@@ -8,6 +8,8 @@ class grad_vehicleSpawner {
         file = MODULES_DIRECTORY\grad-vehicleSpawner\functions\common;
 
         class addInteraction {};
+        class getDLC {};
+        class getVehicleWeapons {};
         class initModule {postInit = 1;};
         class preload {};
         class trackVehicleStatus {};
@@ -23,8 +25,11 @@ class grad_vehicleSpawner {
         class createVehicleContext {};
         class fillSelectionList {};
         class openDialog {};
+        class setCamTarget {};
         class updateAnimationList {};
         class updateCamera {};
+        class updateInformation {};
+        class updateMyVehiclesInfo {};
         class updateTexturesList {};
     };
 
@@ -32,13 +37,18 @@ class grad_vehicleSpawner {
         file = MODULES_DIRECTORY\grad-vehicleSpawner\functions\events;
 
         class onAnimationSelChanged {};
+        class onButtonDelete {};
+        class onButtonMount {};
         class onButtonSpawn {};
         class onContextTabChanged {};
         class onDialogUnload {};
+        class onKeyDown {};
         class onMouseButtonDown {};
         class onMouseButtonUp {};
         class onMouseMoving {};
+        class onMouseOverSidebar {};
         class onMouseZChanged {};
+        class onMyVehListSelChanged {};
         class onSelectionChanged {};
         class onSelectionTabChanged {};
         class onTexturesSelChanged {};
@@ -48,8 +58,8 @@ class grad_vehicleSpawner {
         file = MODULES_DIRECTORY\grad-vehicleSpawner\functions\spawn;
 
         class deletePreview {};
+        class deleteVehicle {};
         class onSpawnClient {};
-        class requestSpawn {};
         class spawnPreview {};
         class spawnVehicle {};
     };

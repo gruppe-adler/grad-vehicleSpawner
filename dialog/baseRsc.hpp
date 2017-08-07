@@ -91,6 +91,68 @@ class grad_vehicleSpawner_rscListBox {
     };
 };
 
+class grad_vehicleSpawner_rscListBoxNoHighlight: grad_vehicleSpawner_rscListBox {
+    colorSelectBackground[] = {0.95,0.95,0.95,0};
+    colorSelectBackground2[] = {1,1,1,0};
+    colorSelect[] = {1,1,1,1};
+    colorSelect2[] = {1,1,1,1};
+};
+
+class grad_vehicleSpawner_rscListNBox {
+    access = 0;
+	idc = -1;
+    h = 0.3;
+    w = 0.3;
+    x = 0;
+    y = 0;
+	type = CT_LISTNBOX;
+	style = ST_LEFT + LB_TEXTURES;
+	default = 0;
+	blinkingPeriod = 0;
+
+	colorSelectBackground[] = {1,1,1,0};
+	colorSelectBackground2[] = {1,1,1,0};
+
+	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+	font = "RobotoCondensed";
+	shadow = 0;
+	colorText[] = {1,1,1,1};
+	colorDisabled[] = {1,1,1,0.5};
+	colorSelect[] = {1,1,1,1};
+	colorSelect2[] = {1,1,1,1};
+	colorShadow[] = {0,0,0,0.5};
+
+	tooltip = "";
+	tooltipColorShade[] = {0,0,0,1};
+	tooltipColorText[] = {1,1,1,1};
+	tooltipColorBox[] = {1,1,1,1};
+
+	columns[] = {0.0,0.75};
+
+	drawSideArrows = 0;
+	idcLeft = 1001;
+	idcRight = 1002;
+	period = 1;
+	rowHeight = 0;
+	maxHistoryDelay = 1;
+
+	soundSelect[] = {"\A3\ui_f\data\sound\RscListbox\soundSelect",0.09,1};
+
+	class ListScrollBar
+	{
+		width = 0;
+		height = 0;
+		scrollSpeed = 0.01;
+
+		arrowEmpty = "\A3\ui_f\data\gui\cfg\scrollbar\arrowEmpty_ca.paa";
+		arrowFull = "\A3\ui_f\data\gui\cfg\scrollbar\arrowFull_ca.paa";
+		border = "\A3\ui_f\data\gui\cfg\scrollbar\border_ca.paa";
+		thumb = "\A3\ui_f\data\gui\cfg\scrollbar\thumb_ca.paa";
+
+		color[] = {1,1,1,1};
+	};
+};
+
 class grad_vehicleSpawner_rscSpawnButton {
     access = 0;
     idc = -1;
@@ -103,12 +165,13 @@ class grad_vehicleSpawner_rscSpawnButton {
     h = 0.039216;
 
     borderSize = 0;
-    colorBackground[] = {0,0.7,0,0.8};
-    colorBackgroundActive[] = {0,0,0,1};
+    /*colorBackground[] = {"(profilenamespace getvariable ['GUI_BCG_RGB_R',0])","(profilenamespace getvariable ['GUI_BCG_RGB_G',0])","(profilenamespace getvariable ['GUI_BCG_RGB_B',0])",1};*/
+    colorBackground[] = {0.13,0.54,0.21,1};
+    colorBackgroundActive[] = {0.156,0.648,0.252,1};
     colorBackgroundDisabled[] = {0,0,0,0.5};
     colorBorder[] = {0,0,0,1};
     colorDisabled[] = {1,1,1,0.25};
-    colorFocused[] = {0,0,0,1};
+    colorFocused[] = {0.13,0.54,0.21,1};
     colorShadow[] = {0,0,0,0};
     colorText[] = {1,1,1,1};
     deletable = 0;
@@ -119,11 +182,17 @@ class grad_vehicleSpawner_rscSpawnButton {
     offsetX = 0;
     offsetY = 0;
     shadow = 2;
-    sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+    sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1.2)";
     soundClick[] = {"\A3\ui_f\data\sound\RscButton\soundClick",0.09,1};
     soundEnter[] = {"\A3\ui_f\data\sound\RscButton\soundEnter",0.09,1};
     soundEscape[] = {"\A3\ui_f\data\sound\RscButton\soundEscape",0.09,1};
     soundPush[] = {"\A3\ui_f\data\sound\RscButton\soundPush",0.09,1};
     text = "";
     url = "";
+};
+
+class grad_vehicleSpawner_rscDeleteButton: grad_vehicleSpawner_rscSpawnButton {
+    colorBackground[] = {0.65,0,0,1};
+    colorBackgroundActive[] = {0.75,0,0,1};
+    colorFocused[] = {0.65,0,0,1};
 };

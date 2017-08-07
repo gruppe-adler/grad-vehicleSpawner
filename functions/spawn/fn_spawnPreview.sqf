@@ -1,29 +1,35 @@
 #include "component.hpp"
 
+#include "..\..\dialog\defines.hpp"
+
 params ["_tabID","_cfg","_class"];
 
 private _preview = missionNamespace getVariable ["grad_vehicleSpawner_localVeh",objNull];
 private _spawnPos = grad_vehicleSpawner_spawnPositions select _tabID;
 private _spawnDir = if (count _spawnPos > 3) then {_spawnPos deleteAt 3} else {0};
-private _sizeOld = ((boundingboxreal _preview select 0) vectordistance (boundingboxreal _preview select 1));
 
-deleteVehicle _preview;
+[_preview] call grad_vehicleSpawner_fnc_deletePreview;
+
+private _maxDist = 10;
+private _actualSpawnPos = [];
+while {count _actualSpawnPos == 0} do {
+    _actualSpawnPos = _spawnPos findEmptyPosition [0,_maxDist,_class];
+    _maxDist = _maxDist + 10;
+};
 
 _preview = _class createVehicleLocal [0,0,0];
 _preview enableSimulation false;
 _preview setDir _spawnDir;
-_preview setPos _spawnPos;
+_preview setPos _actualSpawnPos;
 grad_vehicleSpawner_localVeh = _preview;
 
-//adjust cam distance for new preview size
-private _sizeNew = ((boundingboxreal _preview select 0) vectordistance (boundingboxreal _preview select 1));
-if (_sizeOld == 0) then {_sizeOld = _sizeNew};
+private _display = uiNamespace getVariable ["grad_vehicleSpawner_display",displayNull];
+if (!isNull _display) then {
+    private _spawnButton = _display displayCtrl IDC_BUTTONSPAWN;
+    _spawnButton ctrlEnable true;
+};
 
-grad_vehicleSpawner_camProperties params ["_dis"];
-grad_vehicleSpawner_camProperties set [0,_dis * (_sizeNew/_sizeOld)];
-
-grad_vehiclespawner_target = createagent ["Logic",getPos _preview,[],0,"NONE"];
-grad_vehiclespawner_target attachto [_preview,grad_vehicleSpawner_camProperties select 3,""];
+[_preview] call grad_vehicleSpawner_fnc_setCamTarget;
 
 private _animationSources = configproperties [_cfg >> "animationSources","isclass _x",true];
 private _animations = [];
@@ -48,6 +54,8 @@ private _textures = [];
         if (_foreachindex == 0) then {_textures pushBack 1} else {_textures pushBack 0};
     };
 } forEach _textureSources;
+
+[_preview,_textures,_animations,true] call BIS_fnc_initVehicle;
 
 _preview setVariable ["grad_vehicleSpawner_textures",_textures];
 

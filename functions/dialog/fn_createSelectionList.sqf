@@ -69,8 +69,9 @@ _selectionIndicator ctrlSetPosition [0 * BUTTON_W,BUTTON_H,BUTTON_W,INDICATOR_H]
 _selectionIndicator ctrlSetBackgroundColor [0,1,0,0.5];
 _selectionIndicator ctrlCommit 0;
 
-private _buttonSpawn = _display ctrlCreate ["grad_vehicleSpawner_rscSpawnButton",-1,_cgLeft];
+private _buttonSpawn = _display ctrlCreate ["grad_vehicleSpawner_rscSpawnButton",IDC_BUTTONSPAWN,_cgLeft];
 _buttonSpawn ctrlSetPosition [0,safeZoneH - BUTTONSPAWN_H,SIDEBAR_W,BUTTONSPAWN_H];
 _buttonSpawn ctrlSetText "SPAWN";
 _buttonSpawn ctrlAddEventHandler ["ButtonClick",{[_this select 0] call grad_vehicleSpawner_fnc_onButtonSpawn}];
+_buttonSpawn ctrlEnable false;
 _buttonSpawn ctrlCommit 0;

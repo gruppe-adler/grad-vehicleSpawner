@@ -14,6 +14,8 @@ grad_vehiclespawner_target = nil;
 grad_vehicleSpawner_mouseOverArea = nil;
 grad_vehicleSpawner_currentContextTabID = nil;
 grad_vehicleSpawner_currentVehicleCfg = nil;
+grad_vehicleSpawner_sizeOld = nil;
+grad_vehicleSpawner_selVeh = nil;
 
 deleteVehicle grad_vehicleSpawner_localVeh;
 grad_vehicleSpawner_localVeh = nil;

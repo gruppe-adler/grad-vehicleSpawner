@@ -18,23 +18,23 @@ grad_vehicleSpawner_activeVehicleCount = grad_vehicleSpawner_activeVehicleCount 
             [_handle] call CBA_fnc_removePerFrameHandler;
         };
 
-        if (crew _veh > 0) exitWith {
+        if (count crew _veh > 0) exitWith {
             _veh setVariable ["grad_vehicleSpawner_abandonedTimer",0];
         };
 
         if (grad_vehicleSpawner_activeVehicleCount > grad_vehicleSpawner_maxVehicles) exitWith {
             grad_vehicleSpawner_activeVehicleCount = grad_vehicleSpawner_activeVehicleCount - 1;
-            deleteVehicle _veh;
+            [_veh] call grad_vehicleSpawner_fnc_deleteVehicle;
             [_handle] call CBA_fnc_removePerFrameHandler;
         };
 
-        _abandonedTimer = _veh getVariable ["grad_vehicleSpawner_abandonedTimer",0] + TRACK_INTERVAL;
+        _abandonedTimer = (_veh getVariable ["grad_vehicleSpawner_abandonedTimer",0]) + TRACK_INTERVAL;
         _veh setVariable ["grad_vehicleSpawner_abandonedTimer",_abandonedTimer];
         _immobileFactor = if (!(canMove _veh) || fuel _veh == 0) then {3} else {1};
 
-        if (_abandonedTimer * _immobileFactor > 600) exitWith {
+        if (_abandonedTimer * _immobileFactor > grad_vehicleSpawner_vehicleAbandonedTime) exitWith {
             grad_vehicleSpawner_activeVehicleCount = grad_vehicleSpawner_activeVehicleCount - 1;
-            deleteVehicle _veh;
+            [_veh] call grad_vehicleSpawner_fnc_deleteVehicle;
             [_handle] call CBA_fnc_removePerFrameHandler;
         };
 

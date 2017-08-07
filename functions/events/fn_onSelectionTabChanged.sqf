@@ -19,8 +19,4 @@ _selectionIndicator ctrlCommit 0;
     _ctrlList ctrlEnable _active;
     _ctrlList ctrlSetfade ([1,0] select _active);
     _ctrlList ctrlCommit 0;
-
-    if (_active && {lbCursel _ctrlList < 0} && {lbSize _ctrlList > 0}) then {
-        _ctrlList lbSetCurSel 0;
-    };
 } count [IDCS_SELECTIONTABS];

@@ -4,9 +4,11 @@ params ["_ctrlListTextures","_selID"];
 
 private _configName = _ctrlListTextures lbData _selID;
 
-private _preview = missionNamespace getVariable ["grad_vehicleSpawner_localVeh",objNull];
+private _selVeh = missionNamespace getVariable ["grad_vehicleSpawner_selVeh",objNull];
+private _myVehicles = missionNamespace getVariable ["grad_vehicleSpawner_myVehicles",[]];
+if (_selVeh in _myVehicles) exitWith {};
 
-private _textures = _preview getVariable ["grad_vehicleSpawner_textures",[]];
+private _textures = _selVeh getVariable ["grad_vehicleSpawner_textures",[]];
 private _textureID = _textures find _configName;
 if (_textureID >= 0) then {
     for [{_i=0}, {_i<(count _textures)-1}, {_i=_i+2}] do {
@@ -15,8 +17,8 @@ if (_textureID >= 0) then {
     _textures set [_textureID + 1,1];
 };
 
-private _animations = _preview getVariable ["grad_vehicleSpawner_animations",[]];
+private _animations = _selVeh getVariable ["grad_vehicleSpawner_animations",[]];
 
-[_preview,_textures,_animations,true] call BIS_fnc_initVehicle;
+[_selVeh,_textures,_animations,true] call BIS_fnc_initVehicle;
 
-[_preview] call grad_vehicleSpawner_fnc_updateTexturesList;
+[_selVeh] call grad_vehicleSpawner_fnc_updateTexturesList;

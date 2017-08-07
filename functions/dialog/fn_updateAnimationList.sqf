@@ -2,7 +2,8 @@
 
 #include "..\..\dialog\defines.hpp"
 
-params ["_preview",["_cfg",missionNamespace getVariable ["grad_vehicleSpawner_currentVehicleCfg",configNull]]];
+private _selVeh = missionNamespace getVariable ["grad_vehicleSpawner_selVeh",objNull];
+private _cfg = if (isNull _selVeh) then {configNull} else {configFile >> "cfgVehicles" >> typeOf _selVeh};
 
 private _display = uiNamespace getVariable ["grad_vehicleSpawner_display",displayNull];
 
@@ -19,7 +20,7 @@ lbclear _ctrlListAnimations;
     if (_displayName != "" && {getnumber (_x >> "scope") > 1 || !isnumber (_x >> "scope")}) then {
         _lbAdd = _ctrlListAnimations lbadd _displayName;
         _ctrlListAnimations lbsetdata [_lbAdd,_configName];
-        _ctrlListAnimations lbsetpicture [_lbAdd,_checkboxTextures select ((_preview animationphase _configName) max 0)];
+        _ctrlListAnimations lbsetpicture [_lbAdd,_checkboxTextures select ((_selVeh animationphase _configName) max 0)];
     };
     false
 } count (configproperties [_cfg >> "animationSources","isclass _x",true]);

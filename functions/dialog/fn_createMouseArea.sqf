@@ -10,5 +10,7 @@ _mouseArea ctrlSetBackgroundColor [0,0,0,0];
 _mouseArea ctrlCommit 0;
 
 _mouseArea ctrlAddEventHandler ["MouseMoving",{_this call grad_vehicleSpawner_fnc_onMouseMoving}];
+_mouseArea ctrlAddEventHandler ["MouseEnter",{[true] call grad_vehicleSpawner_fnc_onMouseOverSidebar}];
+_mouseArea ctrlAddEventHandler ["MouseExit",{[false] call grad_vehicleSpawner_fnc_onMouseOverSidebar}];
 
 _mouseArea
