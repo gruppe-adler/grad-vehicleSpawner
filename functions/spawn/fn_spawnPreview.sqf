@@ -6,7 +6,6 @@ params ["_tabID","_cfg","_class"];
 
 private _preview = missionNamespace getVariable ["grad_vehicleSpawner_localVeh",objNull];
 private _spawnPos = grad_vehicleSpawner_spawnPositions select _tabID;
-private _spawnDir = if (count _spawnPos > 3) then {_spawnPos deleteAt 3} else {0};
 
 [_preview] call grad_vehicleSpawner_fnc_deletePreview;
 
@@ -15,7 +14,7 @@ private _actualSpawnPos = [[_x,_y,_z],_class] call grad_vehicleSpawner_fnc_findE
 
 _preview = _class createVehicleLocal [0,0,0];
 _preview enableSimulation false;
-_preview setDir _spawnDir;
+_preview setDir _dir;
 _preview setPos _actualSpawnPos;
 grad_vehicleSpawner_localVeh = _preview;
 
