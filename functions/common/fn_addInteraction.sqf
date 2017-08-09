@@ -4,7 +4,7 @@ params ["_obj",["_actionName","Vehicle Spawner"],["_condition",{true}],["_vehicl
 
 private _action = ["grad_vehicleSpawner_mainAction",_actionName,"",{
     params ["_targetObj","_caller","_actionParams"];
-    _actionParams call grad_vehicleSpawner_fnc_openDialog;
+    _actionParams spawn grad_vehicleSpawner_fnc_openDialog;
 },_condition,{},[_vehiclesTypes,_spawnPositions]] call ace_interact_menu_fnc_createAction;
 
 private _isSelfInteraction = player == _obj;
