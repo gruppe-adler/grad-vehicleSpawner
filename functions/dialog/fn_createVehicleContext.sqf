@@ -6,7 +6,7 @@ params ["_display","_cgRight"];
 
 private _buttonInfo = _display ctrlCreate ["RscButtonArsenal",-1,_cgRight];
 _buttonInfo ctrlSetPosition [0 * BUTTONCONTEXT_W,0,BUTTONCONTEXT_W,BUTTON_H];
-_buttonInfo ctrlSetText "\A3\Ui_f\data\GUI\Rsc\RscDisplayGarage\Car_ca.paa";
+_buttonInfo ctrlSetText "\A3\UI_f\data\GUI\Rsc\RscDisplayOptionsVideo\icon_performance.paa";
 _buttonInfo ctrlAddEventHandler ["ButtonClick",{[_this select 0,0] call grad_vehicleSpawner_fnc_onContextTabChanged}];
 _buttonInfo ctrlSetTooltip "Information";
 _buttonInfo ctrlCommit 0;
