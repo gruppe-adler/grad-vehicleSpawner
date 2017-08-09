@@ -8,6 +8,7 @@ class grad_vehicleSpawner {
         file = MODULES_DIRECTORY\grad-vehicleSpawner\functions\common;
 
         class addInteraction {};
+        class findEmptyPosition {};
         class getDLC {};
         class getVehicleWeapons {};
         class initModule {postInit = 1;};

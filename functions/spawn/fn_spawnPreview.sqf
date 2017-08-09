@@ -10,12 +10,8 @@ private _spawnDir = if (count _spawnPos > 3) then {_spawnPos deleteAt 3} else {0
 
 [_preview] call grad_vehicleSpawner_fnc_deletePreview;
 
-private _maxDist = 10;
-private _actualSpawnPos = [];
-while {count _actualSpawnPos == 0} do {
-    _actualSpawnPos = _spawnPos findEmptyPosition [0,_maxDist,_class];
-    _maxDist = _maxDist + 10;
-};
+_spawnPos params ["_x","_y",["_z",0],["_dir",0]];
+private _actualSpawnPos = [[_x,_y,_z],_class] call grad_vehicleSpawner_fnc_findEmptyPosition;
 
 _preview = _class createVehicleLocal [0,0,0];
 _preview enableSimulation false;
