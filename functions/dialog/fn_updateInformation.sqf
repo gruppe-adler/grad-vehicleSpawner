@@ -16,6 +16,7 @@ if (isNull _cfg) exitWith {
     _ctrlInfoAuthor ctrlSetStructuredText parseText "";
 };
 
+private _displayName = [_cfg,"displayName","UNKNOWN VEHICLE"] call BIS_fnc_returnConfigEntry;
 private _fuelCap = [_cfg,"fuelCapacity",0] call BIS_fnc_returnConfigEntry;
 if (_fuelCap isEqualType "") then {_fuelCap = call compile _fuelCap};
 private _fuelCons = [_cfg,"fuelConsumptionRate",0] call BIS_fnc_returnConfigEntry;
@@ -27,6 +28,8 @@ private _cargo = ([_class,true] call BIS_fnc_crewCount) - _crew;
 private _armor = [_cfg,"armor",0] call BIS_fnc_returnConfigEntry;
 
 private _infoList = [
+    [toUpper _displayName,""],
+    ["",""],
     ["Crew",str _crew],
     ["Cargo",str _cargo],
     ["",""],

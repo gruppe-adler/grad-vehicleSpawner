@@ -37,10 +37,11 @@ Add the class `cfgGradVehicleSpawner` to your `description.ext`. Use the followi
 
 ### Attributes
 
-Attribute     | Default Value | Explanation
---------------|---------------|-------------------------------------------------------------------------------------
-maxVehicles   | 40            | Threshold of spawned vehicles, after which empty vehicles will be deleted instantly.
-abandonedTime | 1200          | Time in seconds after which a vehicle will count as abandoned and will be deleted. (30s accuracy)
+Attribute       | Default Value | Explanation
+----------------|---------------|--------------------------------------------------------------------------------------------------
+abandonedTime   | 1200          | Time in seconds after which a vehicle will count as abandoned and will be deleted. (30s accuracy)
+maxVehicles     | 40            | Global threshold of spawned vehicles, after which empty vehicles will be deleted instantly.
+maxVehiclesUser | 5             | Threshold of total vehicles per user, after which his oldest vehicles will be deleted instantly.
 
 ### Example
 
