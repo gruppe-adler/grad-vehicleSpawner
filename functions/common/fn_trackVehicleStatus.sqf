@@ -18,7 +18,7 @@ grad_vehicleSpawner_activeVehicleCount = grad_vehicleSpawner_activeVehicleCount 
             [_handle] call CBA_fnc_removePerFrameHandler;
         };
 
-        if (count crew _veh > 0) exitWith {
+        if ({isPlayer _x} count crew _veh > 0) exitWith {
             _veh setVariable ["grad_vehicleSpawner_abandonedTimer",0];
         };
 

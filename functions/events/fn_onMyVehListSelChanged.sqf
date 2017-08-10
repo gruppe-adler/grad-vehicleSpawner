@@ -28,4 +28,10 @@ private _display = uiNamespace getVariable ["grad_vehicleSpawner_display",displa
     private _ctrlList = _display displayCtrl _x;
     _ctrlList lbSetCurSel -1;
     false
-} count [IDCS_SELECTIONTABS]
+} count [IDCS_SELECTIONTABS];
+
+
+private _mountBlocked = ([typeof _selVehicle,true] call BIS_fnc_crewCount == count crew _selVehicle) || ([configFile >> "cfgVehicles" >> typeOf _selVehicle,"isUAV",0] call BIS_fnc_returnConfigEntry == 1);
+if (_mountBlocked) then {
+    (_display displayCtrl IDC_BUTTONMOUNT) ctrlEnable false;
+};

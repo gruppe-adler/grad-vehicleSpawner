@@ -9,6 +9,7 @@ class grad_vehicleSpawner {
 
         class addInteraction {};
         class compileSpawnPositions {};
+        class createDroneAI {};
         class findEmptyPosition {};
         class getDLC {};
         class getVehicleWeapons {};
