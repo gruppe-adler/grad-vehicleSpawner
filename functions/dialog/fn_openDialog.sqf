@@ -12,7 +12,7 @@ grad_vehicleSpawner_cam cameraeffect ["External","back"];
 showCinemaBorder false;
 grad_vehicleSpawner_camProperties = [10,45,20,[0,0,-0.8]];
 
-grad_vehicleSpawner_spawnPositions = _spawnPositions;
+grad_vehicleSpawner_spawnPositions = [_spawnPositions] call grad_vehicleSpawner_fnc_compileSpawnPositions;
 grad_vehicleSpawner_localVeh = objNull;
 grad_vehicleSpawner_target = objNull;
 grad_vehicleSpawner_selVeh = objNull;
