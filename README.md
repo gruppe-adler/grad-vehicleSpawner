@@ -64,17 +64,23 @@ condition      | Code - Condition for the action to be visible. Passed parameter
 vehicleTypes   | Array - Does nothing right now. Empty array to allow all existing vehicles.
 spawnPositions | Array - Array of 5 Spawnpositions (one for each vehicle type)
 
+### Spawnpositions Array
+
 Spawnpositions have to be in order: [Wheeled,Tracked,Rotary Wing,Fixed Wing,Naval]  
-Each positions can have a fourth entry besides x,y and z: Spawn direction of the vehicle for this position.
+Allowed data types are:
+
+* Array - format Pos2D, Pos3D or [x,y,z,direction] - PosATL is used to find spawn positions
+* String - markername - direction of marker determines spawn direction
+* Object - vehicles will spawn on or around given object - object direction determines spawn direction
+
 
 ### Example
 
 ```sqf
 _spawnLand = [3200,1200,0];  // Wheeled and tracked will use same spawn position
 _spawnAir = [3500,1600,0,128];  // spawndirection is 128 >> in direction of runway
-_spawnWater = [3140,1400,0];
 
-[_laptop,"GRAD Vehicle Spawner",{true},[],[_spawnLand,_spawnLand,_spawnAir,_spawnAir,_spawnWater]] call grad_vehicleSpawner_fnc_addInteraction;
+[_laptop,"GRAD Vehicle Spawner",{true},[],[_spawnLand,_spawnLand,helipad_1,_spawnAir,"spawnmarker_water_1"]] call grad_vehicleSpawner_fnc_addInteraction;
 ```
 
 ## Usage
