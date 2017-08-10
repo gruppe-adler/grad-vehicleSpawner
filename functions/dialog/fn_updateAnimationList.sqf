@@ -11,6 +11,7 @@ private _checkboxTextures = [
     tolower gettext (configfile >> "RscCheckBox" >> "textureUnchecked"),
     tolower gettext (configfile >> "RscCheckBox" >> "textureChecked")
 ];
+private _checkboxColor = [[1,1,1,1],[0.5,0.5,0.5,1]] select (_selVeh in (missionNamespace getVariable ["grad_vehicleSpawner_myVehicles",[]]));
 
 private _ctrlListAnimations = _display displayCtrl IDC_LISTANIMATION;
 lbclear _ctrlListAnimations;
@@ -21,6 +22,8 @@ lbclear _ctrlListAnimations;
         _lbAdd = _ctrlListAnimations lbadd _displayName;
         _ctrlListAnimations lbsetdata [_lbAdd,_configName];
         _ctrlListAnimations lbsetpicture [_lbAdd,_checkboxTextures select ((_selVeh animationphase _configName) max 0)];
+        _ctrlListAnimations lbSetPictureColor [_lbAdd,_checkboxColor];
+        _ctrlListAnimations lbSetPictureColorSelected [_lbAdd,_checkboxColor];
     };
     false
 } count (configproperties [_cfg >> "animationSources","isclass _x",true]);

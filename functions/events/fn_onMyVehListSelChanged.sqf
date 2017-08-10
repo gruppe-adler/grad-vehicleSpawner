@@ -22,3 +22,10 @@ private _cfg = configFile >> "CfgVehicles" >> _vehClass;
 [] call grad_vehicleSpawner_fnc_updateInformation;
 [] call grad_vehicleSpawner_fnc_updateAnimationList;
 [] call grad_vehicleSpawner_fnc_updateTexturesList;
+
+private _display = uiNamespace getVariable ["grad_vehicleSpawner_display",displayNull];
+{
+    private _ctrlList = _display displayCtrl _x;
+    _ctrlList lbSetCurSel -1;
+    false
+} count [IDCS_SELECTIONTABS]

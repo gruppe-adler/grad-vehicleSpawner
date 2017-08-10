@@ -11,6 +11,7 @@ private _checkboxTextures = [
     tolower gettext (configfile >> "RscCheckBox" >> "textureUnchecked"),
     tolower gettext (configfile >> "RscCheckBox" >> "textureChecked")
 ];
+private _checkboxColor = [[1,1,1,1],[0.5,0.5,0.5,1]] select (_selVeh in (missionNamespace getVariable ["grad_vehicleSpawner_myVehicles",[]]));
 
 private _textures = _selVeh getVariable ["grad_vehicleSpawner_textures",[]];
 private _currentID = _textures find 1;
@@ -24,6 +25,8 @@ lbclear _ctrlListTextures;
         _ctrlListTextures lbsetdata [_lbAdd,_configName];
         _isCurrent = (_textures find _configName) + 1 == _currentID;
         _ctrlListTextures lbsetpicture [_lbAdd,_checkboxTextures select _isCurrent];
+        _ctrlListTextures lbSetPictureColor [_lbAdd,_checkboxColor];
+        _ctrlListTextures lbSetPictureColorSelected [_lbAdd,_checkboxColor];
     };
 } foreach (configproperties [_cfg >> "textureSources","isclass _x",true]);
 lbsort _ctrlListTextures;

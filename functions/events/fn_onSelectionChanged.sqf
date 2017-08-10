@@ -21,3 +21,7 @@ grad_vehicleSpawner_selVeh = _preview;
 [] call grad_vehicleSpawner_fnc_updateAnimationList;
 [] call grad_vehicleSpawner_fnc_updateTexturesList;
 [controlNull,missionNamespace getVariable ["grad_vehicleSpawner_currentContextTabID",-1]] call grad_vehicleSpawner_fnc_onContextTabChanged;
+
+private _display = uiNamespace getVariable ["grad_vehicleSpawner_display",displayNull];
+private _ctrlMyVehList = _display displayCtrl IDC_LISTMYVEHICLES;
+_ctrlMyVehList lbSetCurSel -1;
