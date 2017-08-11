@@ -46,7 +46,7 @@ private _textures = [];
     _displayName = gettext (_x >> "displayName");
     if (_displayName != "") then {
         _textures pushBack (configName _x);
-        if (_foreachindex == 0) then {_textures pushBack 1} else {_textures pushBack 0};
+        if (_forEachIndex == 0) then {_textures pushBack 1} else {_textures pushBack 0};
     };
 } forEach _textureSources;
 

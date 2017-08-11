@@ -6,7 +6,7 @@ params ["_listCtrl","_selID","_tabID"];
 
 if (_selID < 0) exitWith {};
 
-private _data = missionNamespace getVariable ["grad_vehicleSpawner_data",[[],[],[],[],[]]];
+private _data = missionNamespace getVariable ["grad_vehicleSpawner_currentVehicleData",[[],[],[],[],[]]];
 
 private _modelIndex = _listCtrl lbValue _selID;
 private _modelData = (_data select _tabID) select (_modelIndex + 1);

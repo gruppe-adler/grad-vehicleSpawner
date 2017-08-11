@@ -2,13 +2,19 @@
 
 #include "..\..\dialog\defines.hpp"
 
-params ["_display"];
+params ["_display","_vehiclesTypes"];
 
-private _data = missionNamespace getVariable ["grad_vehicleSpawner_data",[[],[],[],[],[]]];
+private _data = missionNamespace getVariable ["grad_vehicleSpawner_currentVehicleData",[[],[],[],[],[]]];
 
 {
     _items = _x;
-    _ctrlList = _display displayctrl (IDC_SELECTIONLISTCAR + _foreachindex);
+    _ctrlList = _display displayctrl (IDC_SELECTIONLISTCAR + _forEachIndex);
+
+    if (count _items == 0) then {
+        _ctrlButton = _display displayCtrl (IDC_SELECTIONBUTTONCAR + _forEachIndex);
+        _ctrlButton ctrlEnable false;
+    };
+
     for "_i" from 0 to (count _items - 1) step 2 do {
         _model = _items select _i;
         _modelData = _items select (_i + 1);

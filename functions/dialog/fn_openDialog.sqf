@@ -18,6 +18,7 @@ grad_vehicleSpawner_target = objNull;
 grad_vehicleSpawner_selVeh = objNull;
 grad_vehicleSpawner_rMouseDown = false;
 grad_vehicleSpawner_mouseOverArea = true;
+grad_vehicleSpawner_currentVehicleData = [missionNamespace getVariable ["grad_vehicleSpawner_data",[[],[],[],[],[]]],_vehiclesTypes] call grad_vehicleSpawner_fnc_filterVehicleData;
 
 disableSerialization;
 
@@ -48,7 +49,7 @@ _cgRight ctrlCommit 0;
 [_display,_cgRight] call grad_vehicleSpawner_fnc_createMyVehiclesInfo;
 [_display] call grad_vehicleSpawner_fnc_createMouseArea;
 
-[_display] call grad_vehicleSpawner_fnc_fillSelectionList;
+[_display,_vehiclesTypes] call grad_vehicleSpawner_fnc_fillSelectionList;
 [_display] call grad_vehicleSpawner_fnc_updateMyVehiclesInfo;
 
 

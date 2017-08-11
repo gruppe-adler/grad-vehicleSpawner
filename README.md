@@ -62,7 +62,7 @@ Parameter      | Explanation
 object         | Object - The object to add the interaction to
 actionName     | String - The name of the action
 condition      | Code - Condition for the action to be visible. Passed parameters are [target, caller].
-vehicleTypes   | Array - Does nothing right now. Empty array to allow all existing vehicles.
+vehicleTypes   | Array - Sets which vehicles can be chosen from. "ALL" or empty array for all vehicles. "ALLWHEELED","ALLTRACKED","ALLHELIS","ALLPLANES","ALLBOATS" for all vehicles of the respective category. Classnames for only specific vehicles (all version that share the same model will be available).
 spawnPositions | Array - Array of 5 Spawnpositions (one for each vehicle type)
 
 ### Spawnpositions Array
