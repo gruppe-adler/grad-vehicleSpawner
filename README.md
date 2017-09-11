@@ -91,7 +91,7 @@ _spawnAir = [3500,1600,0,128];  // spawndirection is 128 >> in direction of runw
     [],
     [_spawnLand,_spawnLand,helipad_1,_spawnAir,"spawnmarker_water_1"],
     {diag_log ["Vehiclespawner opened. Display:",_this select 0]},
-    {diag_log format ["Vehiclespawner closed. Was open for %1s seconds.",_this select 1 select 0]},
+    {diag_log format ["Vehiclespawner closed. Was open for %1s seconds.",CBA_missionTime - (_this select 1 select 0)]},
     [CBA_missionTime]
 ] call grad_vehicleSpawner_fnc_addInteraction;
 ```
