@@ -2,7 +2,7 @@
 
 #include "..\..\dialog\defines.hpp"
 
-params [["_vehiclesTypes",[]],["_spawnPositions",[]]];
+params [["_vehiclesTypes",[]],["_spawnPositions",[]],["_onDisplayOpen",{}],["_onDisplayClose",{}],["_eventParams",[]]];
 
 [] call grad_vehicleSpawner_fnc_preload;
 
@@ -55,3 +55,8 @@ _cgRight ctrlCommit 0;
 
 [controlNull,0] call grad_vehicleSpawner_fnc_onSelectionTabChanged;
 [controlNull,0] call grad_vehicleSpawner_fnc_onContextTabChanged;
+
+_display setVariable ["grad_vehicleSpawner_onDisplayClose",_onDisplayClose];
+_display setVariable ["grad_vehicleSpawner_eventParams",_eventParams];
+
+[_display,_eventParams] call _onDisplayOpen;

@@ -55,7 +55,7 @@ class cfgGradVehicleSpawner {
 ## Implementation
 Add an ACE-Interaction to an object to open the vehicle spawner dialog.
 
-`[object,actionName,condition,vehicleTypes,spawnPositions] call grad_vehicleSpawner_fnc_addInteraction`
+`[object,actionName,condition,vehicleTypes,spawnPositions,onDisplayOpen,onDisplayClose,eventParams] call grad_vehicleSpawner_fnc_addInteraction`
 
 Parameter      | Explanation
 ---------------|---------------------------------------------------------------------------------------
@@ -64,6 +64,9 @@ actionName     | String - The name of the action
 condition      | Code - Condition for the action to be visible. Passed parameters are [target, caller].
 vehicleTypes   | Array - Sets which vehicles can be chosen from. "ALL" or empty array for all vehicles. "ALLWHEELED","ALLTRACKED","ALLHELIS","ALLPLANES","ALLBOATS" for all vehicles of the respective category. Classnames for only specific vehicles (all version that share the same model will be available).
 spawnPositions | Array - Array of 5 Spawnpositions (one for each vehicle type)
+onDisplayOpen  | Code - Code that is executed when the spawner dialog is opened. Passed parameters are [display,eventParams]
+onDisplayClose | Code - Code that is executed when the dialog is closed. Passed parameters are [display,eventParams]
+eventParams    | Any - Additional parameters that are passed to onDisplayOpen and onDisplayClose events.
 
 ### Spawnpositions Array
 
@@ -81,7 +84,16 @@ Allowed data types are:
 _spawnLand = [3200,1200,0];  // Wheeled and tracked will use same spawn position
 _spawnAir = [3500,1600,0,128];  // spawndirection is 128 >> in direction of runway
 
-[_laptop,"GRAD Vehicle Spawner",{true},[],[_spawnLand,_spawnLand,helipad_1,_spawnAir,"spawnmarker_water_1"]] call grad_vehicleSpawner_fnc_addInteraction;
+[
+    _laptop,
+    "GRAD Vehicle Spawner",
+    {true},
+    [],
+    [_spawnLand,_spawnLand,helipad_1,_spawnAir,"spawnmarker_water_1"],
+    {diag_log ["Vehiclespawner opened. Display:",_this select 0]},
+    {diag_log format ["Vehiclespawner closed. Was open for %1s seconds.",_this select 1 select 0]},
+    [CBA_missionTime]
+] call grad_vehicleSpawner_fnc_addInteraction;
 ```
 
 ## Usage
