@@ -2,10 +2,10 @@
 
 params ["_display","_exitCode"];
 
-[_display,_display getVariable ["grad_vehicleSpawner_eventParams",[]]] call (_display getVariable ["grad_vehicleSpawner_onDisplayClose",{}]);
-
 grad_vehicleSpawner_cam cameraeffect ["terminate", "back"];
 camDestroy grad_vehicleSpawner_cam;
+
+[_display,_display getVariable ["grad_vehicleSpawner_eventParams",[]]] call (_display getVariable ["grad_vehicleSpawner_onDisplayClose",{}]);
 
 grad_vehicleSpawner_cam = nil;
 grad_vehicleSpawner_spawnPositions = nil;
