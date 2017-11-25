@@ -5,6 +5,11 @@
 
 params ["_display","_DIK","_shift","_ctrl","_alt"];
 
+if (_DIK in (actionKeys "nightVision")) then {
+    camUseNVG !grad_vehicleSpawner_camUseNVG;
+    grad_vehicleSpawner_camUseNVG = !grad_vehicleSpawner_camUseNVG;
+};
+
 private _return = switch (_DIK) do {
     case (DIK_BACKSPACE): {
         _cgLeft = _display displayCtrl IDC_CGLEFT;

@@ -9,6 +9,8 @@ params [["_vehiclesTypes",[]],["_spawnPositions",[]],["_onDisplayOpen",{}],["_on
 if (!isNull (missionNamespace getVariable ["grad_vehicleSpawner_cam",objNull])) exitWith {};
 grad_vehicleSpawner_cam = "camera" camcreate (getPos player);
 grad_vehicleSpawner_cam cameraeffect ["External","back"];
+if (sunOrMoon < 0.35) then {camUseNVG true; grad_vehicleSpawner_camUseNVG = true} else {grad_vehicleSpawner_camUseNVG = false};
+
 showCinemaBorder false;
 grad_vehicleSpawner_camProperties = [10,45,20,[0,0,-0.8]];
 
