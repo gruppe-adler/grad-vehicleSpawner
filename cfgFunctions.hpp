@@ -54,6 +54,7 @@ class grad_vehicleSpawner {
         class onMouseOverSidebar {};
         class onMouseZChanged {};
         class onMyVehListSelChanged {};
+        class onPylonSelChanged {};
         class onSelectionChanged {};
         class onSelectionTabChanged {};
         class onTexturesSelChanged {};

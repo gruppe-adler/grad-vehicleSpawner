@@ -2,24 +2,25 @@
 
 params ["_display","_exitCode"];
 
-grad_vehicleSpawner_cam cameraeffect ["terminate", "back"];
-camDestroy grad_vehicleSpawner_cam;
+GVAR(c)am cameraeffect ["terminate", "back"];
+camDestroy GVAR(cam);
 
-[_display,_display getVariable ["grad_vehicleSpawner_eventParams",[]]] call (_display getVariable ["grad_vehicleSpawner_onDisplayClose",{}]);
+[_display,_display getVariable [QGVAR(eventParams),[]]] call (_display getVariable [QGVAR(onDisplayClose),{}]);
 
-grad_vehicleSpawner_cam = nil;
-grad_vehicleSpawner_spawnPositions = nil;
-grad_vehicleSpawner_rMouseDown = nil;
-grad_vehicleSpawner_currentSelTabID = nil;
-grad_vehicleSpawner_camProperties = nil;
-grad_vehiclespawner_target = nil;
-grad_vehicleSpawner_mouseOverArea = nil;
-grad_vehicleSpawner_currentContextTabID = nil;
-grad_vehicleSpawner_currentVehicleCfg = nil;
-grad_vehicleSpawner_sizeOld = nil;
-grad_vehicleSpawner_selVeh = nil;
-grad_vehicleSpawner_currentVehicleData = nil;
+GVAR(cam) = nil;
+GVAR(spawnPositions) = nil;
+GVAR(rMouseDown) = nil;
+GVAR(currentSelTabID) = nil;
+GVAR(camProperties) = nil;
+GVAR(target) = nil;
+GVAR(mouseOverArea) = nil;
+GVAR(currentContextTabID) = nil;
+GVAR(currentVehicleCfg) = nil;
+GVAR(sizeOld) = nil;
+GVAR(selVeh) = nil;
+GVAR(currentVehicleData) = nil;
 grad_vehicleSpawner_camUseNVG = nil;
+GVAR(pylonsComboBoxes) = nil;
 
-deleteVehicle grad_vehicleSpawner_localVeh;
-grad_vehicleSpawner_localVeh = nil;
+deleteVehicle GVAR(localVeh);
+GVAR(localVeh) = nil;

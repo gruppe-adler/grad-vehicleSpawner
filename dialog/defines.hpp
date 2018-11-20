@@ -15,6 +15,10 @@
 #define BUTTONCONTEXT_AMOUNT        4
 #define BUTTONCONTEXT_W             (SIDEBAR_W / BUTTONCONTEXT_AMOUNT)
 #define INDICATOR_H                 (BUTTON_H * 0.15)
+#define PYLONSLIST_PADDING_Y        (UI_GRID_H * 0.50)
+#define PYLONSLIST_PADDING_X        (UI_GRID_W * 1.00)
+#define PYLONSLIST_COMBO_H          (UI_GRID_H * 3)
+#define PYLONSLIST_COMBO_W          (SIDEBAR_W - 2 * PYLONSLIST_PADDING_X)
 #define SELECTIONLIST_H             (safeZoneH - BUTTON_H - INDICATOR_H - 5*UI_GUTTER_H - BUTTONSPAWN_H)
 #define SELECTIONLIST_Y             (BUTTON_H + INDICATOR_H + 1*UI_GUTTER_H)
 #define MYVEHICLEINFO_Y             (safeZoneH/2 * 1.2)
