@@ -20,6 +20,7 @@ grad_vehicleSpawner_selVeh = _preview;
 [] call grad_vehicleSpawner_fnc_updateInformation;
 [] call grad_vehicleSpawner_fnc_updateAnimationList;
 [] call grad_vehicleSpawner_fnc_updateTexturesList;
+[] call grad_vehicleSpawner_fnc_updatePylonsList;
 [controlNull,missionNamespace getVariable ["grad_vehicleSpawner_currentContextTabID",-1]] call grad_vehicleSpawner_fnc_onContextTabChanged;
 
 private _display = uiNamespace getVariable ["grad_vehicleSpawner_display",displayNull];

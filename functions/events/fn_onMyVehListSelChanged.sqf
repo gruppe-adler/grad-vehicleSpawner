@@ -22,6 +22,7 @@ private _cfg = configFile >> "CfgVehicles" >> _vehClass;
 [] call grad_vehicleSpawner_fnc_updateInformation;
 [] call grad_vehicleSpawner_fnc_updateAnimationList;
 [] call grad_vehicleSpawner_fnc_updateTexturesList;
+[] call grad_vehicleSpawner_fnc_updatePylonsList;
 
 private _display = uiNamespace getVariable ["grad_vehicleSpawner_display",displayNull];
 {

@@ -65,6 +65,23 @@ _listTexturesDisabled ctrlSetText "no textures";
 _listTexturesDisabled ctrlSetFade 1;
 _listTexturesDisabled ctrlCommit 0;
 
+private _buttonPylons = _display ctrlCreate ["RscButtonArsenal",IDC_BUTTONPYLONS,_cgRight];
+_buttonPylons ctrlSetPosition [3 * BUTTONCONTEXT_W,0,BUTTONCONTEXT_W,BUTTON_H];
+_buttonPylons ctrlSetText "\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\cargoPut_ca.paa";
+_buttonPylons ctrlAddEventHandler ["ButtonClick",{[_this select 0,3] call grad_vehicleSpawner_fnc_onContextTabChanged}];
+_buttonPylons ctrlSetTooltip "Pylons";
+_buttonPylons ctrlCommit 0;
+
+private _cgListPylons = _display ctrlCreate ["RscControlsGroupNoScrollbars",IDC_LISTPYLONS,_cgRight];
+_cgListPylons ctrlSetPosition [0,CONTEXTAREA_Y,SIDEBAR_W,CONTEXTAREA_H];
+_cgListPylons ctrlCommit 0;
+
+private _listPylonsDisabled = _display ctrlCreate ["RscText",IDC_LISTPYLONSDISABLED,_cgRight];
+_listPylonsDisabled ctrlSetPosition [0,CONTEXTAREA_Y,SIDEBAR_W,BUTTON_H];
+_listPylonsDisabled ctrlSetText "no pylons";
+_listPylonsDisabled ctrlSetFade 1;
+_listPylonsDisabled ctrlCommit 0;
+
 private _selectionIndicator = _display ctrlCreate ["RscBackground",IDC_CONTEXTINDICATOR,_cgRight];
 _selectionIndicator ctrlSetPosition [0 * BUTTON_W,BUTTON_H,BUTTONCONTEXT_W,INDICATOR_H];
 _selectionIndicator ctrlSetBackgroundColor [0,1,0,0.5];

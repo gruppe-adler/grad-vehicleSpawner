@@ -34,6 +34,7 @@ class grad_vehicleSpawner {
         class updateCamera {};
         class updateInformation {};
         class updateMyVehiclesInfo {};
+        class updatePylonsList {};
         class updateTexturesList {};
     };
 
