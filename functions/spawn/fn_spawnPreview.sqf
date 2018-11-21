@@ -12,6 +12,11 @@ private _spawnPos = grad_vehicleSpawner_spawnPositions select _tabID;
 _spawnPos params ["_x","_y",["_z",0],["_dir",0]];
 private _actualSpawnPos = [[_x,_y,_z],_class] call FUNC(findEmptySpawnPosition);
 
+if (_actualSpawnPos isEqualTo [0,0,0]) exitWith {
+    ["Error: Could not find a spawn position!","3DEN_notificationWarning"] call FUNC(showMessage);
+    objNull
+};
+
 _preview = _class createVehicleLocal [0,0,0];
 _preview enableSimulation false;
 _preview setDir _dir;

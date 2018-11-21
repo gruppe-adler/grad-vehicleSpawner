@@ -6,7 +6,7 @@ _spawnPos params ["_x","_y",["_z",0],["_dir",0]];
 private _actualSpawnPos = [[_x,_y,_z],_vehClass] call FUNC(findEmptySpawnPosition);
 
 if (_actualSpawnPos isEqualTo [0,0,0]) exitWith {
-    ["Error: Server could not find a spawn position!"] remoteExec [QFUNC(showMessage),remoteExecutedOwner,false];
+    ["Error: Server could not find a spawn position!","3DEN_notificationWarning"] remoteExec [QFUNC(showMessage),remoteExecutedOwner,false];
     [] remoteExec [QFUNC(restorePreview),remoteExecutedOwner,false];
 };
 

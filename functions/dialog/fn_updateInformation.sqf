@@ -13,7 +13,6 @@ private _ctrlInfoDisabled = _display displayCtrl IDC_INFODISABLED;
 
 if (isNull _cfg) exitWith {
     lnbClear _ctrlInfoList;
-    _ctrlInfoList lnbAddRow ["no information",""];
     _ctrlInfoAuthor ctrlSetStructuredText parseText "";
 };
 

@@ -1,7 +1,7 @@
 #include "component.hpp"
 #include "..\..\dialog\defines.hpp"
 
-params [["_text",""]];
+params [["_text",""],["_sound",""]];
 
 private _display = uiNamespace getVariable [QGVAR(display),displayNull];
 if (isNull _display) exitWith {};
@@ -24,3 +24,7 @@ _ctrlMessage ctrlCommit 0;
     _ctrlMessage ctrlSetFade 1;
     _ctrlMessage ctrlCommit 1;
 },[_ctrlMessage,_text],3] call CBA_fnc_waitAndExecute;
+
+if (_sound != "") then {
+    playSound _sound;
+};
