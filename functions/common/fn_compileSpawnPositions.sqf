@@ -6,17 +6,16 @@ private _return = [];
 {
     _pos = switch (typeName _x) do {
         case ("ARRAY"): {
-            _x params [["_x",0],["_y",0],["_z",0],["_dir",0]];
-            [_x,_y,_z,_dir]
+            _x
         };
         case ("STRING"): {
-            (getMarkerPos _x) + [markerDir _x]
+            (getMarkerPos _x) + [markerDir _x,20,5]
         };
         case ("OBJECT"): {
-            (getPos _x) + [getDir _x]
+            (getPos _x) + [getDir _x,20,5]
         };
         default {
-            [0,0,0,0]
+            [0,0,0,0,20,5]
         };
     };
     _return pushBack _pos;
@@ -25,7 +24,7 @@ private _return = [];
 } count _spawnPositions;
 
 while {count _return < 5} do {
-    _return pushBack [0,0,0,0]
+    _return pushBack [0,0,0,0,20,5]
 };
 
 _return

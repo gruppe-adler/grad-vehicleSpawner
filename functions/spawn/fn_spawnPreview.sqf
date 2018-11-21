@@ -2,22 +2,21 @@
 
 #include "..\..\dialog\defines.hpp"
 
-params ["_tabID","_cfg","_class"];
+params ["_tabID","_cfg","_vehClass"];
 
 private _preview = missionNamespace getVariable ["grad_vehicleSpawner_localVeh",objNull];
 private _spawnPos = grad_vehicleSpawner_spawnPositions select _tabID;
 
 [_preview,false] call grad_vehicleSpawner_fnc_deletePreview;
 
-_spawnPos params ["_x","_y",["_z",0],["_dir",0]];
-private _actualSpawnPos = [[_x,_y,_z],_class] call FUNC(findEmptySpawnPosition);
+([_spawnPos,_vehClass] call FUNC(findEmptySpawnPosition)) params ["_actualSpawnPos","_dir"];
 
 if (_actualSpawnPos isEqualTo [0,0,0]) exitWith {
     ["Error: Could not find a spawn position!","3DEN_notificationWarning"] call FUNC(showMessage);
     objNull
 };
 
-_preview = _class createVehicleLocal [0,0,0];
+_preview = _vehClass createVehicleLocal [0,0,0];
 _preview enableSimulation false;
 _preview setDir _dir;
 _preview setPos _actualSpawnPos;
