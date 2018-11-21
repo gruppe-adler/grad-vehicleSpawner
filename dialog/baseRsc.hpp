@@ -233,3 +233,23 @@ class grad_vehicleSpawner_rscDeleteButton: grad_vehicleSpawner_rscSpawnButton {
     colorBackgroundActive[] = {0.75,0,0,1};
     colorFocused[] = {0.65,0,0,1};
 };
+
+
+class grad_vehicleSpawner_rscText {
+    access = 0;
+    type = CT_STATIC;
+    idc = -1;
+    style = ST_CENTER;
+    x = 0;
+    y = 0;
+    w = 0.1;
+    h = 0.05;
+    //x and y are not part of a global class since each rsctext will be positioned 'somewhere'
+    font = "EtelkaMonospacePro";
+    sizeEx = 0.04;
+    colorBackground[] = {0,0,0,1};
+    colorText[] = {1,1,1,1};
+    text = "";
+    fixedWidth = 0;
+    shadow = 0;
+};

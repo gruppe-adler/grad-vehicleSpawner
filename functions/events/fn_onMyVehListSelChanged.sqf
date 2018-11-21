@@ -14,7 +14,7 @@ private _selVehicle = _myVehicles select _selID;
 grad_vehicleSpawner_selVeh = _selVehicle;
 [_selVehicle] call grad_vehicleSpawner_fnc_setCamTarget;
 
-[] call grad_vehicleSpawner_fnc_deletePreview;
+[nil,false] call grad_vehicleSpawner_fnc_deletePreview;
 
 private _vehClass = typeOf _selVehicle;
 private _cfg = configFile >> "CfgVehicles" >> _vehClass;

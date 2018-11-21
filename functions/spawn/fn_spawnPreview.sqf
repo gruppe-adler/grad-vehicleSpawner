@@ -7,10 +7,10 @@ params ["_tabID","_cfg","_class"];
 private _preview = missionNamespace getVariable ["grad_vehicleSpawner_localVeh",objNull];
 private _spawnPos = grad_vehicleSpawner_spawnPositions select _tabID;
 
-[_preview] call grad_vehicleSpawner_fnc_deletePreview;
+[_preview,false] call grad_vehicleSpawner_fnc_deletePreview;
 
 _spawnPos params ["_x","_y",["_z",0],["_dir",0]];
-private _actualSpawnPos = [[_x,_y,_z],_class] call grad_vehicleSpawner_fnc_findEmptyPosition;
+private _actualSpawnPos = [[_x,_y,_z],_class] call FUNC(findEmptySpawnPosition);
 
 _preview = _class createVehicleLocal [0,0,0];
 _preview enableSimulation false;
@@ -18,13 +18,8 @@ _preview setDir _dir;
 _preview setPos _actualSpawnPos;
 grad_vehicleSpawner_localVeh = _preview;
 
-private _display = uiNamespace getVariable ["grad_vehicleSpawner_display",displayNull];
-if (!isNull _display) then {
-    private _spawnButton = _display displayCtrl IDC_BUTTONSPAWN;
-    _spawnButton ctrlEnable true;
-};
-
-[_preview] call grad_vehicleSpawner_fnc_setCamTarget;
+[true] call FUNC(enableSpawnButton);
+[_preview] call FUNC(setCamTarget);
 
 private _animationSources = configproperties [_cfg >> "animationSources","isclass _x",true];
 private _animations = [];

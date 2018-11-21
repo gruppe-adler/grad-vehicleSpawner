@@ -1,4 +1,4 @@
-#include "component.hpp"
+ #include "component.hpp"
 
 #include "..\..\dialog\defines.hpp"
 
@@ -44,6 +44,11 @@ private _cgRight = _display ctrlCreate ["RscControlsGroupNoScrollbars",IDC_CGRIG
 _cgRight ctrlSetPosition [safeZoneX + safeZoneW - SIDEBAR_W,safeZoneY,SIDEBAR_W,safezoneH];
 _cgRight ctrlSetFade SIDEBAR_FADE;
 _cgRight ctrlCommit 0;
+
+private _ctrlMessage = _display ctrlCreate ["grad_vehicleSpawner_rscText",IDC_MESSAGE];
+_ctrlMessage ctrlSetPosition [safeZoneX + SIDEBAR_W,safeZoneY,safeZoneW - 2 * SIDEBAR_W,BUTTON_H];
+_ctrlMessage ctrlSetFade 1;
+_ctrlMessage ctrlCommit 0;
 
 [_display,_cgLeft,_cgRight] call grad_vehicleSpawner_fnc_createBackground;
 [_display,_cgLeft] call grad_vehicleSpawner_fnc_createSelectionList;

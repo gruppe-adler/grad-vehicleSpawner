@@ -21,6 +21,7 @@ GVAR(selVeh) = nil;
 GVAR(currentVehicleData) = nil;
 grad_vehicleSpawner_camUseNVG = nil;
 GVAR(pylonsComboBoxes) = nil;
+GVAR(previousPreview) = nil;
 
 deleteVehicle GVAR(localVeh);
 GVAR(localVeh) = nil;

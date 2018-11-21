@@ -1,14 +1,21 @@
 #include "component.hpp"
-
 #include "..\..\dialog\defines.hpp"
 
-params [["_preview",missionNamespace getVariable ["grad_vehicleSpawner_localVeh",objNull]]];
 
-if (isNull _preview) exitWith {};
-deleteVehicle _preview;
+params [["_preview",missionNamespace getVariable [QGVAR(localVeh),objNull]],["_savePrevious",false]];
 
-private _display = uiNamespace getVariable ["grad_vehicleSpawner_display",displayNull];
-if (isNull _display) exitWith {};
+private _previousPreview = missionNamespace getVariable [QGVAR(previousPreview),objNull];
+deleteVehicle _previousPreview;
 
-private _spawnButton = _display displayCtrl IDC_BUTTONSPAWN;
-_spawnButton ctrlEnable false;
+// cache preview in case spawn on server fails
+if (!isNull _preview) then {
+    if (_savePrevious) then {
+        _preview setVariable [QGVAR(previousPosASL),getPosASL _preview];
+        _preview setPosASL [0,0,0];
+        GVAR(previousPreview) = _preview;
+    } else {
+        deleteVehicle _preview;
+    };
+};
+
+[false] call FUNC(enableSpawnButton);

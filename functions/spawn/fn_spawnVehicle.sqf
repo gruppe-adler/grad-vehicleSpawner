@@ -3,7 +3,12 @@
 params ["_vehClass","_textures","_animations","_spawnPos",["_pylonMags",[]],["_side",WEST]];
 
 _spawnPos params ["_x","_y",["_z",0],["_dir",0]];
-private _actualSpawnPos = [[_x,_y,_z],_vehClass] call grad_vehicleSpawner_fnc_findEmptyPosition;
+private _actualSpawnPos = [[_x,_y,_z],_vehClass] call FUNC(findEmptySpawnPosition);
+
+if (_actualSpawnPos isEqualTo [0,0,0]) exitWith {
+    ["Error: Server could not find a spawn position!"] remoteExec [QFUNC(showMessage),remoteExecutedOwner,false];
+    [] remoteExec [QFUNC(restorePreview),remoteExecutedOwner,false];
+};
 
 private _veh = _vehClass createVehicle [0,0,0];
 _veh setDir _dir;

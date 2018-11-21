@@ -14,7 +14,7 @@ private _display = uiNamespace getVariable ["grad_vehicleSpawner_display",displa
 private _ctrlListPylonsDisabled = _display displayCtrl IDC_LISTPYLONSDISABLED;
 private _cgListPylons = _display displayCtrl IDC_LISTPYLONS;
 
-{ctrlDelete _x} forEach GVAR(pylonsComboBoxes);
+{ctrlDelete _x} forEach (missionNamespace getVariable [QGVAR(pylonsComboBoxes),[]]);
 
 private _aircraftWithPylons = missionNamespace getVariable ["ace_pylons_aircraftWithPylons",[]];
 if !(typeOf _selVeh in _aircraftWithPylons) exitWith {

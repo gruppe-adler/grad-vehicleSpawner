@@ -11,7 +11,7 @@ class grad_vehicleSpawner {
         class compileSpawnPositions {};
         class createDroneAI {};
         class filterVehicleData {};
-        class findEmptyPosition {};
+        class findEmptySpawnPosition {};
         class getDLC {};
         class getVehicleWeapons {};
         class initModule {postInit = 1;};
@@ -27,9 +27,11 @@ class grad_vehicleSpawner {
         class createMyVehiclesInfo {};
         class createSelectionList {};
         class createVehicleContext {};
+        class enableSpawnButton {};
         class fillSelectionList {};
         class openDialog {};
         class setCamTarget {};
+        class showMessage {};
         class updateAnimationList {};
         class updateCamera {};
         class updateInformation {};
@@ -54,6 +56,7 @@ class grad_vehicleSpawner {
         class onMouseOverSidebar {};
         class onMouseZChanged {};
         class onMyVehListSelChanged {};
+        class onNewVehicleSelected {};
         class onPylonSelChanged {};
         class onSelectionChanged {};
         class onSelectionTabChanged {};
@@ -66,6 +69,7 @@ class grad_vehicleSpawner {
         class deletePreview {};
         class deleteVehicle {};
         class onSpawnClient {};
+        class restorePreview {};
         class spawnPreview {};
         class spawnVehicle {};
     };
