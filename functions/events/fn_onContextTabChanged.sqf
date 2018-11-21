@@ -20,10 +20,12 @@ _contextIndicator ctrlCommit 0;
     _ctrlList ctrlSetfade ([1,0] select _active);
     _ctrlList ctrlCommit 0;
 
-    _active = _active && {_forEachIndex != 0} && {lbSize _ctrlList == 0};
+    _active = _active && {lbSize _ctrlList == 0};
     _ctrlDisabled = _display displayCtrl (_forEachIndex + IDC_INFODISABLED);
     _ctrlDisabled ctrlEnable _active;
     _ctrlDisabled ctrlSetfade ([1,0] select _active);
     _ctrlDisabled ctrlCommit 0;
+
+    diag_log ["onContextTabChanged",_buttonID,_active,_ctrlList,_ctrlDisabled,_forEachIndex];
 
 } forEach [IDCS_CONTEXTTABS];

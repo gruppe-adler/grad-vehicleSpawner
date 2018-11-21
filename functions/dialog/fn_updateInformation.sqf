@@ -9,6 +9,7 @@ private _cfg = if (isNull _selVeh) then {configNull} else {configFile >> "cfgVeh
 private _display = uiNamespace getVariable ["grad_vehicleSpawner_display",displayNull];
 private _ctrlInfoList = _display displayCtrl IDC_INFO_LIST;
 private _ctrlInfoAuthor = _display displayCtrl IDC_INFO_AUTHOR;
+private _ctrlInfoDisabled = _display displayCtrl IDC_INFODISABLED;
 
 if (isNull _cfg) exitWith {
     lnbClear _ctrlInfoList;
@@ -60,6 +61,7 @@ if (count _vehicleWeapons > 0) then {
 lnbClear _ctrlInfoList;
 {_ctrlInfoList lnbAddRow _x; false} count _infoList;
 
+_ctrlInfoDisabled ctrlshow (lbsize _ctrlInfoList == 0);
 
 //update addon info ============================================================
 private _dlc = [_cfg] call grad_vehicleSpawner_fnc_getDLC;
