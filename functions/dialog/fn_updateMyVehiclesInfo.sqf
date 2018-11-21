@@ -29,5 +29,16 @@ lbClear _ctrlListMyVehicles;
 if (isNull _veh) then {
     _ctrlListMyVehicles lbSetCurSel -1;
 } else {
-    _ctrlListMyVehicles lbSetCurSel (_myVehicles find _veh);
+    _condition = {
+        params ["","","_veh"];
+        !((getPos _veh) isEqualTo [0,0,0])
+    };
+    _statement = {
+        params ["_ctrlListMyVehicles","_myVehicles","_veh"];
+        if (isNull _veh) exitWith {};
+        if (isNull _ctrlListMyVehicles) exitWith {};
+
+        _ctrlListMyVehicles lbSetCurSel (_myVehicles find _veh);
+    };
+    [_condition,_statement,[_ctrlListMyVehicles,_myVehicles,_veh],1,_statement] call CBA_fnc_waitUntilAndExecute;
 };
