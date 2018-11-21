@@ -47,8 +47,9 @@ maxVehiclesUser | 5             | Threshold of total vehicles per user, after wh
 
 ```sqf
 class cfgGradVehicleSpawner {
-    maxVehicles = 100;
     abandonedTime = 1500;
+    maxVehicles = 100;
+    maxVehiclesUser = 10;
 };
 ```
 
