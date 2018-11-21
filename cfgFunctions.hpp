@@ -34,6 +34,7 @@ class grad_vehicleSpawner {
         class updateCamera {};
         class updateInformation {};
         class updateMyVehiclesInfo {};
+        class updatePylonsList {};
         class updateTexturesList {};
     };
 
@@ -53,6 +54,7 @@ class grad_vehicleSpawner {
         class onMouseOverSidebar {};
         class onMouseZChanged {};
         class onMyVehListSelChanged {};
+        class onPylonSelChanged {};
         class onSelectionChanged {};
         class onSelectionTabChanged {};
         class onTexturesSelChanged {};
