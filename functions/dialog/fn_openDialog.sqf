@@ -60,7 +60,15 @@ _ctrlMessage ctrlCommit 0;
 [_display] call grad_vehicleSpawner_fnc_updateMyVehiclesInfo;
 
 
-[controlNull,0] call grad_vehicleSpawner_fnc_onSelectionTabChanged;
+private _defaultCategorySelection = switch (true) do {
+    case ("ALL" in _vehiclesTypes || count _vehiclesTypes == 0 || "ALLWHEELED" in _vehiclesTypes): {0};
+    case ("ALLTRACKED" in _vehiclesTypes): {1};
+    case ("ALLHELIS" in _vehiclesTypes): {2};
+    case ("ALLPLANES" in _vehiclesTypes): {3};
+    case ("ALLBOATS" in _vehiclesTypes): {4};
+    default {0};
+};
+[controlNull,_defaultCategorySelection] call grad_vehicleSpawner_fnc_onSelectionTabChanged;
 [controlNull,0] call grad_vehicleSpawner_fnc_onContextTabChanged;
 
 _display setVariable ["grad_vehicleSpawner_onDisplayClose",_onDisplayClose];
