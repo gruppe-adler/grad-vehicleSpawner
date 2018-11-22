@@ -83,6 +83,7 @@ Allowed data types are:
     * searchRadius (optional) - radius around this position which will be searched for available empty spawn positions (make this small to force exact position; default: 20)
     * increment (optional) - the smaller this is, the slower the function, but the more likely the vehicle will spawn close to center (default: 5)
 * Code - Has to return [Pos3d,Direction]. Position [0,0,0] will mean no valid position was found. Params passed are [class of vehicle].
+    * if you want to use `list _trigger` to check for any objects which might block a spawn, make sure to filter `objNull` as well as `grad_vehicleSpawner_target` and `grad_vehicleSpawner_localVeh`, which are a helper object and the local vehicle preview
 
 ### Example
 
