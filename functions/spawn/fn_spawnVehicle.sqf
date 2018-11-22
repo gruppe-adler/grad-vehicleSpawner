@@ -2,7 +2,7 @@
 
 params ["_vehClass","_textures","_animations","_spawnPos",["_pylonMags",[]],["_side",WEST]];
 
-([_spawnPos,_vehClass] call FUNC(findEmptySpawnPosition)) params ["_actualSpawnPos","_dir"];
+([_spawnPos,_vehClass] call FUNC(findEmptySpawnPosition)) params ["_actualSpawnPos",["_dir",0]];
 
 if (_actualSpawnPos isEqualTo [0,0,0]) exitWith {
     ["Error: Server could not find a spawn position!","3DEN_notificationWarning"] remoteExec [QFUNC(showMessage),remoteExecutedOwner,false];

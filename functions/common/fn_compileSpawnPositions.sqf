@@ -8,6 +8,9 @@ private _return = [];
         case ("ARRAY"): {
             _x
         };
+        case ("CODE"): {
+            _x
+        };
         case ("STRING"): {
             (getMarkerPos _x) + [markerDir _x,20,5]
         };

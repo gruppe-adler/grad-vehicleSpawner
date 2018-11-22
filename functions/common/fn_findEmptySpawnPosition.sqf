@@ -2,6 +2,10 @@
 
 params ["_searchPos",["_class","B_Soldier_F"]];
 
+if (_searchPos isEqualType {}) exitWith {
+    [_class] call _searchPos
+};
+
 
 // if single spawnpos --> make an array
 if !((_searchPos param [0,0]) isEqualType []) then {

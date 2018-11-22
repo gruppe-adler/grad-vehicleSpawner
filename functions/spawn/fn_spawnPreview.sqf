@@ -9,7 +9,7 @@ private _spawnPos = grad_vehicleSpawner_spawnPositions select _tabID;
 
 [_preview,false] call grad_vehicleSpawner_fnc_deletePreview;
 
-([_spawnPos,_vehClass] call FUNC(findEmptySpawnPosition)) params ["_actualSpawnPos","_dir"];
+([_spawnPos,_vehClass] call FUNC(findEmptySpawnPosition)) params ["_actualSpawnPos",["_dir",0]];
 
 if (_actualSpawnPos isEqualTo [0,0,0]) exitWith {
     ["Error: Could not find a spawn position!","3DEN_notificationWarning"] call FUNC(showMessage);

@@ -82,7 +82,7 @@ Allowed data types are:
     * direction (optional) - direction in which vehicles will spawn here, 0 is most reliable (default: 0)
     * searchRadius (optional) - radius around this position which will be searched for available empty spawn positions (make this small to force exact position; default: 20)
     * increment (optional) - the smaller this is, the slower the function, but the more likely the vehicle will spawn close to center (default: 5)
-
+* Code - Has to return [Pos3d,Direction]. Position [0,0,0] will mean no valid position was found. Params passed are [class of vehicle].
 
 ### Example
 
