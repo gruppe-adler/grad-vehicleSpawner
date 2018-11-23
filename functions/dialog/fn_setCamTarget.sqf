@@ -19,6 +19,7 @@ if (!isNull GVAR(target)) then {
     GVAR(target) attachto [_camObj,GVAR(camProperties) select 3,""];
 } else {
     GVAR(target) = createagent ["Logic",getPos _camObj,[],0,"NONE"];
+    GVAR(target) attachto [_camObj,GVAR(camProperties) select 3,""];
 };
 
 [] call FUNC(updateCamera);
