@@ -14,7 +14,7 @@ class grad_vehicleSpawner {
         class findEmptySpawnPosition {};
         class getDLC {};
         class getVehicleWeapons {};
-        class initModule {postInit = 1;};
+        class initModule {preInit = 1;};
         class preload {};
         class trackVehicleStatus {};
     };

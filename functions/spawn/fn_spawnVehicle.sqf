@@ -1,6 +1,6 @@
 #include "component.hpp"
 
-params ["_vehClass","_textures","_animations","_spawnPos",["_pylonMags",[]],["_side",WEST]];
+params ["_vehClass","_textures","_animations","_spawnPos",["_pylonMags",[]],["_side",WEST],["_onSpawn",{}],["_eventParams",[]]];
 
 ([_spawnPos,_vehClass] call FUNC(findEmptySpawnPosition)) params ["_actualSpawnPos",["_dir",0]];
 
@@ -26,5 +26,6 @@ if ([configFile >> "cfgVehicles" >> _vehClass,"isUAV",0] call BIS_fnc_returnConf
     [_veh,_side] call grad_vehicleSpawner_fnc_createDroneAI;
 };
 
+[_veh,_textures,_animations,remoteExecutedOwner,_eventParams] call _onSpawn;
 [_veh] remoteExec ["grad_vehicleSpawner_fnc_onSpawnClient",remoteExecutedOwner,false];
 [_veh] call grad_vehicleSpawner_fnc_trackVehicleStatus;

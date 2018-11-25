@@ -33,15 +33,19 @@ class CfgFunctions {
 ```
 
 ## Config
-Add the class `cfgGradVehicleSpawner` to your `description.ext`. Use the following attributes to configure the module:
+Add the class `cfgGradVehicleSpawner` to your `description.ext`. This is entirely optional. Default values will be used unless set by config. Use the following attributes to configure the module:
 
 ### Attributes
 
 Attribute       | Default Value | Explanation
-----------------|---------------|--------------------------------------------------------------------------------------------------
-abandonedTime   | 1200          | Time in seconds after which a vehicle will count as abandoned and will be deleted. (30s accuracy)
-maxVehicles     | 40            | Global threshold of spawned vehicles, after which empty vehicles will be deleted instantly.
-maxVehiclesUser | 5             | Threshold of total vehicles per user, after which his oldest vehicles will be deleted instantly.
+----------------|---------------|-----------------------------------------------------------------------------------------------------------
+abandonedTime   | 1200          | Number - Time in seconds after which a vehicle will count as abandoned and will be deleted. (30s accuracy)
+maxVehicles     | 40            | Number - Global threshold of spawned vehicles, after which empty vehicles will be deleted instantly.
+maxVehiclesUser | 5             | Number - Threshold of total vehicles per user, after which his oldest vehicles will be deleted instantly.
+eventParams     | []            | Array - Parameters that will be passed to events below.
+onDisplayOpen   | ""            | Statement - Will be executed locally where dialog is openend. Passed parameters are [display,eventParams]
+onDisplayClose  | ""            | Statement - Will be executed locally where dialog is closed. Passed parameters are [display,eventParams]
+onSpawn         | ""            | Statement - Will be executed on server when vehicle is spawned. Passed parameters are [vehicle,textures,animations,netID of spawning player (remoteExecutedOwner),eventParams]
 
 ### Example
 
@@ -50,24 +54,29 @@ class cfgGradVehicleSpawner {
     abandonedTime = 1500;
     maxVehicles = 100;
     maxVehiclesUser = 10;
+    eventParams[] = {};
+    onDisplayOpen = "systemChat 'hi!'";
+    onDisplayClose = "systemChat 'bye bye!'";
+    onSpawn = "(_this select 0) disableTIEquipment true";
 };
 ```
 
 ## Implementation
 Add an ACE-Interaction to an object to open the vehicle spawner dialog.
 
-`[object,actionName,condition,vehicleTypes,spawnPositions,onDisplayOpen,onDisplayClose,eventParams] call grad_vehicleSpawner_fnc_addInteraction`
+`[object,actionName,condition,vehicleTypes,spawnPositions,onDisplayOpen,onDisplayClose,eventParams,onSpawn] call grad_vehicleSpawner_fnc_addInteraction`
 
 Parameter      | Explanation
----------------|---------------------------------------------------------------------------------------
+---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 object         | Object - The object to add the interaction to
 actionName     | String - The name of the action
 condition      | Code - Condition for the action to be visible. Passed parameters are [target, caller].
 vehicleTypes   | Array - Sets which vehicles can be chosen from. "ALL" or empty array for all vehicles. "ALLWHEELED","ALLTRACKED","ALLHELIS","ALLPLANES","ALLBOATS" for all vehicles of the respective category. Classnames for only specific vehicles (all version that share the same model will be available).
 spawnPositions | Array - Array of 5 Spawnpositions (one for each vehicle type)
-onDisplayOpen  | Code - Code that is executed when the spawner dialog is opened. Passed parameters are [display,eventParams]
-onDisplayClose | Code - Code that is executed when the dialog is closed. Passed parameters are [display,eventParams]
-eventParams    | Any - Additional parameters that are passed to onDisplayOpen and onDisplayClose events.
+onDisplayOpen  | Code - See config attribues. Overrides config value.
+onDisplayClose | Code - See config attribues. Overrides config value.
+onSpawn        | Code - See config attribues. Overrides config value.
+eventParams    | Any - See config attribues. Overrides config value.
 
 ### Spawnpositions Array
 
@@ -100,7 +109,8 @@ _spawnAir = [3500,1600,0,128];  // spawndirection is 128 >> in direction of my i
     [_spawnLand,_spawnLand,helipad_1,_spawnAir,"spawnmarker_water_1"],
     {diag_log ["Vehiclespawner opened. Display:",_this select 0]},
     {diag_log format ["Vehiclespawner closed. Was open for %1s seconds.",CBA_missionTime - (_this select 1 select 0)]},
-    [CBA_missionTime]
+    [CBA_missionTime],
+    {(_this select 0) disableTIEquipment true}
 ] call grad_vehicleSpawner_fnc_addInteraction;
 ```
 
