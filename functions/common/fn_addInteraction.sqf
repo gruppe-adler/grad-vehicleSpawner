@@ -14,7 +14,11 @@ params [
 
 private _action = ["grad_vehicleSpawner_mainAction",_actionName,"",{
     params ["_targetObj","_caller","_actionParams"];
-    _actionParams spawn grad_vehicleSpawner_fnc_openDialog;
+
+    // ACE-Interaction Menu closes within one frame
+    [{
+        _this spawn grad_vehicleSpawner_fnc_openDialog;
+    },_actionParams] call CBA_fnc_execNextFrame;
 },_condition,{},[_vehiclesTypes,_spawnPositions,_onDisplayOpen,_onDisplayClose,_eventParams,_onSpawn]] call ace_interact_menu_fnc_createAction;
 
 private _isSelfInteraction = player == _obj;
